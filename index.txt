@@ -20,7 +20,7 @@ f:I[68027,["/web_page_loading_test/_next/static/chunks/dc870a2bfc07668c.js","/we
 b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 7:null
 19:I[54500,["/web_page_loading_test/_next/static/chunks/35a3884f03e442b8.js"],"IconMark"]
-9:{"metadata":[["$","title","0",{"children":"AW-116"}],["$","link","1",{"rel":"icon","href":"/web_page_loading_test/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L19","2",{}]],"error":null,"digest":"$undefined"}
+9:{"metadata":[["$","title","0",{"children":"Web Page Loading Test"}],["$","link","1",{"rel":"icon","href":"/web_page_loading_test/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L19","2",{}]],"error":null,"digest":"$undefined"}
 e:"$9:metadata"
 1a:I[9838,["/web_page_loading_test/_next/static/chunks/dc870a2bfc07668c.js","/web_page_loading_test/_next/static/chunks/154d58d809d62e09.js","/web_page_loading_test/_next/static/chunks/a535e5dca12141f0.js"],"Image"]
 1b:I[2477,["/web_page_loading_test/_next/static/chunks/dc870a2bfc07668c.js","/web_page_loading_test/_next/static/chunks/154d58d809d62e09.js","/web_page_loading_test/_next/static/chunks/a535e5dca12141f0.js"],"Heading"]
