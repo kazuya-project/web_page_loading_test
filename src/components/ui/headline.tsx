@@ -1,6 +1,9 @@
 "use client";
 
 import { Box, Heading, Text, Image } from "@chakra-ui/react";
+import blackMarble2016_928m_asia_east_labeled from '../../resources/BlackMarble_2016_928m_asia_east_labeled.js';
+
+const base64_url = 'data:image/jpeg;base64, ' + blackMarble2016_928m_asia_east_labeled;
 
 export function Headline() {
     return (
@@ -15,7 +18,7 @@ export function Headline() {
                 borderRadius="md"
             >
                 <Image
-                    src="BlackMarble_2016_928m_asia_east_labeled.webp"
+                    src={base64_url}
                     alt="World map visualization"
                     position="absolute"
                     top="0"

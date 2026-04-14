@@ -52,6 +52,7 @@ export async function CardGrid() {
     const response = await fetch("http://localhost:3000/data.json");
     const json = await response.json()
     const d: any[] = json.data;
+
     return (
         <Center>
             <Box columnCount="2" gap="0" breakInside="avoid">

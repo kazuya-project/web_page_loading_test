@@ -7,6 +7,14 @@ import { Box, Image, Heading, Skeleton } from "@chakra-ui/react";
 import 'swiper/css';
 import 'swiper/css/navigation';
 
+import image_552 from '../../resources/image-552';
+import image_496 from '../../resources/image-496';
+import image_1290 from '../../resources/image-1290';
+
+const base64_url_552 = 'data:image/jpeg;base64, ' + image_552;
+const base64_url_496 = 'data:image/jpeg;base64, ' + image_496;
+const base64_url_1290 = 'data:image/jpeg;base64, ' + image_1290;
+
 interface CarouselSlideProps {
     src: string;
     alt: string;
@@ -49,7 +57,7 @@ export function Carousel() {
         <Swiper navigation={true} modules={[Navigation, Autoplay]} autoplay={{delay: 2000, disableOnInteraction: false}} loop={true}>
             <SwiperSlide>
                 <CarouselSlide 
-                    src="image-552.webp" 
+                    src={base64_url_552}
                     alt="Carousel slide 1"
                     heading="Carousel headline 1"
                     aspectRatio="16/9"
@@ -58,7 +66,7 @@ export function Carousel() {
 
             <SwiperSlide>
                 <CarouselSlide 
-                    src="image-496.webp" 
+                    src={base64_url_496}
                     alt="Carousel slide 2"
                     heading="Carousel headline 2"
                     aspectRatio="16/9"
@@ -67,7 +75,7 @@ export function Carousel() {
 
             <SwiperSlide>
                 <CarouselSlide 
-                    src="image-1290.webp" 
+                    src={base64_url_1290}
                     alt="Carousel slide 3"
                     heading="Carousel headline 3"
                     aspectRatio="16/9"
