@@ -49,7 +49,7 @@ export function Carousel() {
         <Swiper navigation={true} modules={[Navigation, Autoplay]} autoplay={{delay: 2000, disableOnInteraction: false}} loop={true}>
             <SwiperSlide>
                 <CarouselSlide 
-                    src="image-552.jpg" 
+                    src="image-552.webp" 
                     alt="Carousel slide 1"
                     heading="Carousel headline 1"
                     aspectRatio="16/9"
@@ -58,7 +58,7 @@ export function Carousel() {
 
             <SwiperSlide>
                 <CarouselSlide 
-                    src="image-496.jpg" 
+                    src="image-496.webp" 
                     alt="Carousel slide 2"
                     heading="Carousel headline 2"
                     aspectRatio="16/9"
@@ -67,7 +67,7 @@ export function Carousel() {
 
             <SwiperSlide>
                 <CarouselSlide 
-                    src="image-1290.jpg" 
+                    src="image-1290.webp" 
                     alt="Carousel slide 3"
                     heading="Carousel headline 3"
                     aspectRatio="16/9"
