@@ -31,6 +31,7 @@ function MediaContainer({ src, type }: MediaContainerProps) {
             ) : (
                 <video 
                     src={src} 
+                    {...({ loading: "lazy" } as any)}
                     muted 
                     loop 
                     autoPlay
