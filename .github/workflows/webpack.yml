@@ -66,5 +66,5 @@ jobs:
         username: b22_40632936
         password: ${{ secrets.ftp_password }}
         local-dir: ./artifacts/out/
-        server-dir: ./github_test/
+        server-dir: ./htdocs/github_test/
     
