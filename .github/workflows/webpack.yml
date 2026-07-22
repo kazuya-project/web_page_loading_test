@@ -31,11 +31,10 @@ jobs:
         mkdir -p artifacts
         cp -r out artifacts
 
-    - name: Save Artifacts
-      uses: actions/upload-artifact@v4
-        with:
-          name: output_artifact
-          path: artifacts
+    -uses: actions/upload-artifact@v4
+      with:
+        name: output_artifact
+        path: artifacts
 
   publish:
     runs-on: ubuntu-latest
