@@ -65,6 +65,6 @@ jobs:
         server: ftpupload.net
         username: b22_40632936
         password: ${{ secrets.ftp_password }}
-        local-dir: ./out/
-        server-dir: /github_test/
+        local-dir: ./artifacts/out/
+        server-dir: ./github_test/
     
