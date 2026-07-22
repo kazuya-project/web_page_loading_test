@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
+        node-version: [22.x]
 
     steps:
     - uses: actions/checkout@v4
@@ -28,3 +28,13 @@ jobs:
         npm run dev &
         sleep 10
         npm run build
+
+  publish:
+    steps:
+    - uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+      with:
+        server: ftpupload.net
+        username: b22_40632936
+        password: ${{ secrets.ftp_password }}
+        local-dir: ./out/
+        server-dir: /github_test/
