@@ -30,11 +30,23 @@ jobs:
         npm run build
 
   publish:
+    runs-on: ubuntu-latest
     steps:
-    - uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+    - name: Status Check
+      run: |
+        echo "ls ==================="
+        ls -la
+        echo "==================="
+        echo "pwd ==================="
+        pwd
+        echo "==================="
+
+    - name: Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.4.0
       with:
         server: ftpupload.net
         username: b22_40632936
         password: ${{ secrets.ftp_password }}
         local-dir: ./out/
         server-dir: /github_test/
+    
