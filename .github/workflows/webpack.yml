@@ -2,7 +2,7 @@ name: NodeJS with Webpack
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "test_action" ]
   pull_request:
     branches: [ "master" ]
 
@@ -25,4 +25,6 @@ jobs:
     - name: Build
       run: |
         npm install
+        npm run dev &
+        sleep 10
         npm run build
