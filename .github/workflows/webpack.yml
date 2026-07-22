@@ -2,7 +2,7 @@ name: NodeJS with Webpack
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "test_action" ]
   pull_request:
     branches: [ "master" ]
 
@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
+        node-version: [22.x]
 
     steps:
     - uses: actions/checkout@v4
@@ -25,4 +25,46 @@ jobs:
     - name: Build
       run: |
         npm install
+        npm run dev &
+        sleep 10
         npm run build
+        mkdir -p artifacts
+        cp -r out artifacts
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: output_artifact
+        path: artifacts
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/download-artifact@v4
+      with:
+        name: output_artifact
+        path: artifacts
+
+    - name: Status Check
+      run: |
+        echo "ls ==================="
+        ls -la
+        echo "==================="
+        echo "pwd ==================="
+        pwd
+        echo "==================="
+
+        echo "tree ==================="
+        tree
+        echo "==================="
+
+    - name: Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+      with:
+        server: ftpupload.net
+        username: b22_40632936
+        password: ${{ secrets.ftp_password }}
+        local-dir: ./artifacts/out/
+        server-dir: ./github_test/
+    
