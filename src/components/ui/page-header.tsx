@@ -1,18 +1,20 @@
 "use client";
 
 import { Heading, Center, Flex, Spacer, Button, Box, Grid, GridItem, Text } from "@chakra-ui/react"
-import { ColorModeButton } from "@/components/ui/color-mode"
 import { Ticker } from "@/components/ui/ticker";
+import { useEffect, useState } from "react";
 
 export function PageHeader() {
-    const d: Date = new Date();
-    const ds: string = d.toDateString();
+    const [ds, setDs] = useState<string>("");
+
+    useEffect(() => {
+        setDs(new Date().toDateString());
+    }, []);
 
     return (
         <>
             <Flex mt="4" gap="4">
                 <Spacer />
-                <ColorModeButton />
                 <Button size="xs" variant="surface" colorPalette="cyan">Subscribe</Button>
                 <Button size="xs" variant="surface">Login</Button>
             </Flex>

@@ -16,8 +16,7 @@ export function Ticker() {
     useEffect(() => {
         const fetchData = async () => {
         try {
-            const basePath: string = process.env.NODE_ENV === 'production' ? '/web_page_loading_test/' : '';
-            const response = await fetch(basePath + 'ticker.json');
+        const response = await fetch('ticker.json');
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
             }

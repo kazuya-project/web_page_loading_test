@@ -1,8 +1,11 @@
 import { Flex, Spacer, Box, Separator, HoverCard, Portal, Text, Grid } from "@chakra-ui/react";
+import fs from "fs";
+import path from "path";
 
 export async function MainMenu() {
-    const response = await fetch("http://localhost:3000/menu.json");
-    const json = await response.json();
+    const filePath = path.join(process.cwd(), "public", "menu.json");
+    const fileContents = fs.readFileSync(filePath, "utf8");
+    const json = JSON.parse(fileContents);
     const menu_items: any[] = json.menu_items;
     return (
         <>
