@@ -9,6 +9,7 @@ on:
 
 jobs:
   build:
+    if: github.ref_type == 'branch'
     runs-on: ubuntu-latest
 
     strategy:
@@ -29,7 +30,7 @@ jobs:
         npm run build
 
   build-and-upload:
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: github.ref_type == 'tag'
     runs-on: ubuntu-latest
 
     strategy:
