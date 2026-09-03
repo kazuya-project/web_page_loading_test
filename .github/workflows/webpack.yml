@@ -82,7 +82,7 @@ jobs:
 
     - name: Create index_copy.html
       run: |
-        cp ./artifacts/out/index.html ./artifacts/out/index_copy.html
+        cp ./artifacts/out/index.html ./artifacts/out/index_copy.txt
 
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.4.0
