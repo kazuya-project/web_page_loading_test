@@ -80,6 +80,10 @@ jobs:
         tree
         echo "==================="
 
+    - name: Create index_copy.html
+      run: |
+        cp ./artifacts/out/index.html ./artifacts/out/index_copy.html
+
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.4.0
       with:
