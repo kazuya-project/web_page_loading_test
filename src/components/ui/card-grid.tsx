@@ -1,4 +1,5 @@
 import { Box, Stack, HStack, Image, Center, Separator, Heading, Text } from "@chakra-ui/react";
+import { LazyVideo } from "@/components/ui/lazy-video";
 import fs from "fs";
 import path from "path";
 
@@ -31,21 +32,7 @@ function MediaContainer({ src, type }: MediaContainerProps) {
                     objectFit="cover"
                 />
             ) : (
-                <video 
-                    src={src} 
-                    {...({ loading: "lazy" } as any)}
-                    muted 
-                    loop 
-                    autoPlay
-                    style={{
-                        position: "absolute",
-                        top: "0",
-                        left: "0",
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover"
-                    }}
-                />
+                <LazyVideo src={src} />
             )}
         </Box>
     );

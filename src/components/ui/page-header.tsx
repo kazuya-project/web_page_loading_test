@@ -1,7 +1,6 @@
 "use client";
 
 import { Heading, Center, Flex, Spacer, Button, Box, Grid, GridItem, Text } from "@chakra-ui/react"
-import { Ticker } from "@/components/ui/ticker";
 import { useEffect, useState } from "react";
 
 export function PageHeader() {
@@ -33,7 +32,6 @@ export function PageHeader() {
                 </GridItem >
                 <GridItem colSpan={2}>
                     <Text textStyle="xs" textAlign="right" fontWeight="bold" mt="6">{ds}</Text>
-                    <Ticker></Ticker>
                 </GridItem>
             </Grid>
         </>

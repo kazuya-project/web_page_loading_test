@@ -21,6 +21,7 @@ export function Headline() {
                     src={base64_url}
                     alt="World map visualization"
                     position="absolute"
+                    loading="lazy"
                     top="0"
                     left="0"
                     width="100%"
