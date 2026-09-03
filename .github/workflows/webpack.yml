@@ -84,11 +84,18 @@ jobs:
       run: |
         cp ./artifacts/out/index.html ./artifacts/out/index_copy.txt
 
-    - name: Sync files
+    - name: Zip out directory
+      run: |
+        cd ./artifacts/out
+        zip -r ../out.zip .
+        cd ../..
+        rm -rf ./artifacts/out
+
+    - name: Upload zip via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.4.0
       with:
         server: ftpupload.net
         username: b22_40632936
         password: ${{ secrets.ftp_password }}
-        local-dir: ./artifacts/out/
+        local-dir: ./artifacts/
         server-dir: ./htdocs/github_test/
