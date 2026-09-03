@@ -6,8 +6,6 @@ const nextConfig: NextConfig = {
 
 module.exports = {
   output: 'export',
-  basePath: process.env.NODE_ENV === 'production' ? '/web_page_loading_test' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/web_page_loading_test/' : '',
 };
 
 export default nextConfig;

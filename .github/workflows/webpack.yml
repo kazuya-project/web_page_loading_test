@@ -2,12 +2,14 @@ name: NodeJS with Webpack
 
 on:
   push:
-    branches: [ "master", "test_action" ]
-  pull_request:
-    branches: [ "master" ]
+    branches:
+      - "**"
+    tags:
+      - "v*.*.*"
 
 jobs:
   build:
+    if: github.ref_type == 'branch'
     runs-on: ubuntu-latest
 
     strategy:
@@ -25,8 +27,27 @@ jobs:
     - name: Build
       run: |
         npm install
-        npm run dev &
-        sleep 10
+        npm run build
+
+  build-and-upload:
+    if: github.ref_type == 'tag'
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22.x]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Build
+      run: |
+        npm install
         npm run build
         mkdir -p artifacts
         cp -r out artifacts
@@ -37,7 +58,7 @@ jobs:
         path: artifacts
 
   publish:
-    needs: build
+    needs: build-and-upload
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -67,4 +88,3 @@ jobs:
         password: ${{ secrets.ftp_password }}
         local-dir: ./artifacts/out/
         server-dir: ./htdocs/github_test/
-    

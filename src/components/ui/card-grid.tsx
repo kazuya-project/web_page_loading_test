@@ -1,4 +1,6 @@
 import { Box, Stack, HStack, Image, Center, Separator, Heading, Text } from "@chakra-ui/react";
+import fs from "fs";
+import path from "path";
 
 interface MediaContainerProps {
     src: string;
@@ -50,8 +52,9 @@ function MediaContainer({ src, type }: MediaContainerProps) {
 }
 
 export async function CardGrid() {
-    const response = await fetch("http://localhost:3000/data.json");
-    const json = await response.json()
+    const filePath = path.join(process.cwd(), "public", "data.json");
+    const fileContents = fs.readFileSync(filePath, "utf8");
+    const json = JSON.parse(fileContents);
     const d: any[] = json.data;
 
     return (

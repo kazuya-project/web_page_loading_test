@@ -1,8 +1,11 @@
 import { Box, Stack, HStack, Image, Center, Separator, Heading, Text, Grid, GridItem } from "@chakra-ui/react";
+import fs from "fs";
+import path from "path";
 
 export async function NewsList() {
-    const response = await fetch("http://localhost:3000/news-list.json");
-    const json = await response.json()
+    const filePath = path.join(process.cwd(), "public", "news-list.json");
+    const fileContents = fs.readFileSync(filePath, "utf8");
+    const json = JSON.parse(fileContents);
     const data: any[] = json.news_list;
 
     return (
