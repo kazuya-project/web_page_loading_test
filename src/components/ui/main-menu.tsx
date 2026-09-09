@@ -1,12 +1,30 @@
-import { Flex, Spacer, Box, Separator, HoverCard, Portal, Text, Grid } from "@chakra-ui/react";
-import fs from "fs";
-import path from "path";
+"use client"
 
-export async function MainMenu() {
-    const filePath = path.join(process.cwd(), "public", "menu.json");
-    const fileContents = fs.readFileSync(filePath, "utf8");
-    const json = JSON.parse(fileContents);
-    const menu_items: any[] = json.menu_items;
+import { Flex, Spacer, Box, Separator, HoverCard, Portal, Text, Grid } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+
+export function MainMenu() {
+    const [menuItems, setMenuItems] = useState<any[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        fetch("./menu.json")
+            .then(res => res.json())
+            .then(json => {
+                setMenuItems(json.menu_items || []);
+                setIsLoading(false);
+            })
+            .catch(err => {
+                console.error("Failed to load menu", err);
+                setIsLoading(false);
+            });
+    }, []);
+
+    if (isLoading) {
+        return null;
+    }
+
+    const menu_items = menuItems;
     return (
         <>
             <Flex gap="4">

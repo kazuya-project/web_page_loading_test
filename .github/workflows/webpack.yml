@@ -99,3 +99,11 @@ jobs:
         password: ${{ secrets.ftp_password }}
         local-dir: ./artifacts/
         server-dir: ./htdocs/github_test/
+
+    - name: Rename index_copy.txt to index.html on FTP server
+      run: |
+        lftp -u b22_40632936,${{ secrets.ftp_password }} ftpupload.net <<EOF
+        cd ./htdocs/github_test/
+        rename index_copy.txt index.html
+        quit
+        EOF

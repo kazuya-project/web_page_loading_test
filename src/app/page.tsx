@@ -1,4 +1,6 @@
-import { CardGrid } from "@/components/ui/card-grid";
+"use client"
+
+import dynamic from "next/dynamic";
 import { PageHeader } from "@/components/ui/page-header";
 import { MainMenu } from "@/components/ui/main-menu";
 import { Headline } from "@/components/ui/headline";
@@ -7,7 +9,9 @@ import { NewsList } from "@/components/ui/news-list";
 import { Grid, GridItem } from "@chakra-ui/react";
 import { Container } from "@chakra-ui/react";
 
-export default async function Page() {
+const CardGrid = dynamic(() => import("@/components/ui/card-grid").then(m => ({ default: m.CardGrid })), { ssr: false });
+
+export default function Page() {
     return (
         <Container width="1920px">
             <PageHeader></PageHeader>
