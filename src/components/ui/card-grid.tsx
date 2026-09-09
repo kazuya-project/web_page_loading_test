@@ -1,7 +1,7 @@
+"use client"
+
 import { Box, Stack, HStack, Image, Center, Separator, Heading, Text } from "@chakra-ui/react";
-import { LazyVideo } from "@/components/ui/lazy-video";
-import fs from "fs";
-import path from "path";
+import { useEffect, useState } from "react";
 
 interface MediaContainerProps {
     src: string;
@@ -10,9 +10,9 @@ interface MediaContainerProps {
 
 function MediaContainer({ src, type }: MediaContainerProps) {
     return (
-        <Box 
-            position="relative" 
-            width="120px" 
+        <Box
+            position="relative"
+            width="120px"
             height="120px"
             flexShrink="0"
             overflow="hidden"
@@ -20,8 +20,8 @@ function MediaContainer({ src, type }: MediaContainerProps) {
             borderRadius="md"
         >
             {type === "image" ? (
-                <Image 
-                    src={src} 
+                <Image
+                    src={src}
                     alt={src}
                     loading="lazy"
                     position="absolute"
@@ -32,17 +32,47 @@ function MediaContainer({ src, type }: MediaContainerProps) {
                     objectFit="cover"
                 />
             ) : (
-                <LazyVideo src={src} />
+                <video
+                    src={src}
+                    muted
+                    loop
+                    autoPlay
+                    style={{
+                        position: "absolute",
+                        top: "0",
+                        left: "0",
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover"
+                    }}
+                />
             )}
         </Box>
     );
 }
 
-export async function CardGrid() {
-    const filePath = path.join(process.cwd(), "public", "data.json");
-    const fileContents = fs.readFileSync(filePath, "utf8");
-    const json = JSON.parse(fileContents);
-    const d: any[] = json.data;
+export function CardGrid() {
+    const [data, setData] = useState<any[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        fetch("./data.json")
+            .then(res => res.json())
+            .then(json => {
+                setData(json.data || []);
+                setIsLoading(false);
+            })
+            .catch(err => {
+                console.error("Failed to load data", err);
+                setIsLoading(false);
+            });
+    }, []);
+
+    if (isLoading) {
+        return null;
+    }
+
+    const d = data;
 
     return (
         <Center>

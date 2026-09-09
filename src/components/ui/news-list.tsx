@@ -1,12 +1,28 @@
-import { Box, Stack, HStack, Image, Center, Separator, Heading, Text, Grid, GridItem } from "@chakra-ui/react";
-import fs from "fs";
-import path from "path";
+"use client"
 
-export async function NewsList() {
-    const filePath = path.join(process.cwd(), "public", "news-list.json");
-    const fileContents = fs.readFileSync(filePath, "utf8");
-    const json = JSON.parse(fileContents);
-    const data: any[] = json.news_list;
+import { Box, Stack, HStack, Image, Center, Separator, Heading, Text, Grid, GridItem } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+
+export function NewsList() {
+    const [data, setData] = useState<any[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        fetch("./news-list.json")
+            .then(res => res.json())
+            .then(json => {
+                setData(json.news_list || []);
+                setIsLoading(false);
+            })
+            .catch(err => {
+                console.error("Failed to load news list", err);
+                setIsLoading(false);
+            });
+    }, []);
+
+    if (isLoading) {
+        return null;
+    }
 
     return (
         <>

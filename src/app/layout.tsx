@@ -12,10 +12,10 @@ export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <Provider>{children}</Provider>
         <div style={{ position: "fixed", top: "8px", right: "12px", fontSize: "12px", color: "#888", zIndex: 9999, userSelect: "none" }}>
           v{manifest.version}
         </div>
+        <Provider>{children}</Provider>
       </body>
     </html>
   )
